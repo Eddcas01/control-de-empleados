@@ -1,0 +1,12 @@
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\bin\Debug\empleadoscontrol.exe.config
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\bin\Debug\empleadoscontrol.exe
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\bin\Debug\empleadoscontrol.pdb
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.csprojAssemblyReference.cache
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\CapaVistaFRM.mdi_control.resources
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.Properties.Resources.resources
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.csproj.GenerateResource.cache
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.csproj.CoreCompileInputs.cache
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.exe
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.pdb
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.registrar_entradas.resources
+C:\Users\Randy\Desktop\Empleados\empleadoscontrol\empleadoscontrol\obj\Debug\empleadoscontrol.registrar_salidas.resources
