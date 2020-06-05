@@ -17,6 +17,7 @@ namespace CapaVistaFRM
         //private mantenimiento_empleados frm_mantenimiento_empleados;  
         private registrar_entradas frm_registrar_entradas;
         private registrar_salidas frm_registrar_salidas;
+        private generar_reporte_general frm_generar_reporte_general;
 
         //sentencia sn = new sentencia();
         String usuarioActivo = "rchocm";
@@ -33,7 +34,9 @@ namespace CapaVistaFRM
         private void frm_registrar_entradas_FormClosed(Object sender, FormClosedEventArgs e)
         { frm_registrar_entradas = null; }
         private void frm_registrar_salidas_FormClosed(Object sender, FormClosedEventArgs e)
-        { frm_registrar_salidas = null; }        
+        { frm_registrar_salidas = null; }
+        private void frm_generar_reporte_general_FormClosed(Object sender, FormClosedEventArgs e)
+        { frm_generar_reporte_general = null; }        
 
         //====================Funciones de declaración de Eventos====================
 
@@ -113,6 +116,28 @@ namespace CapaVistaFRM
             else
             {
                 frm_registrar_salidas.Activate();
+            }
+        }
+
+        private void ReporteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ReporteGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //GENERAR REPORTE GENERAL
+            //generar_reporte_general
+            if (frm_generar_reporte_general == null)
+            {
+                frm_generar_reporte_general = new generar_reporte_general();
+                frm_generar_reporte_general.MdiParent = this;
+                frm_generar_reporte_general.FormClosed += new FormClosedEventHandler(frm_generar_reporte_general_FormClosed);
+                frm_generar_reporte_general.Show();
+            }
+            else
+            {
+                frm_generar_reporte_general.Activate();
             }
         }
     }

@@ -158,7 +158,7 @@ namespace empleadoscontrol
                         codigo1.ExecuteNonQuery();
                         conn.Close();
                         MessageBox.Show("Se registro correctamente! \n " +
-                            "Fecha: " + hoy.ToString("yyyy-MM-dd") + " \n " +
+                            "Fecha: " + hoy.ToString("dd-MM-yy") + " \n " +
                             "Hora: " + auxFormatoTimeEntrada + "", "Entrada",
                                 MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         txt_codEmpleado.Focus();
@@ -166,6 +166,7 @@ namespace empleadoscontrol
                     }
                     catch (OdbcException ex)
                     {
+                        limpiarCampos();
                         MessageBox.Show(" Error al regisrar la entrada. \n\n Error: " + ex.ToString());
                         conn.Close();
                     }
@@ -179,6 +180,7 @@ namespace empleadoscontrol
             }
             catch (Exception)
             {
+                limpiarCampos();
                 MessageBox.Show("Error al consultar la entrada del empleado ",
                         "Entrada", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }            
