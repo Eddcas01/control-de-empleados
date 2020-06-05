@@ -184,13 +184,14 @@ namespace empleadoscontrol
                 {
                     if (consultarHoraEntrada() == "")
                     {
+                        limpiarCampos();
                         MessageBox.Show("No puede registrar una salida si el empleado no ha ingresado. ",
                             "Salida", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
                     {
                         //REGISTRAR SALIDA                                           
-                        string horas_efectivas = "";
+                        string totaldehoras = "";
                         DateTime hoy = DateTime.Now;
                         string formatoDate = hoy.ToString("yyyy-MM-dd");
                         string formatoTimeSalida = hoy.ToString("hh:mm tt");
@@ -212,17 +213,17 @@ namespace empleadoscontrol
                             double auxWord = Convert.ToDouble(concWord);
 
                             int minuto = Convert.ToInt32(auxWord * 60);
-                            horas_efectivas = words[0] + ":" + minuto + ":00";
+                            totaldehoras = words[0] + ":" + minuto + ":00";
                             /* MessageBox.Show(" formatoTime: " + formatoTimeSalida +
                                 " \n auxFormatoTimeSalida: " + auxFormatoTimeSalida +
-                                " \n horas_efectivas IF: " + horas_efectivas); */
+                                " \n totaldehoras IF: " + totaldehoras); */
                         }
                         else
                         {
-                            horas_efectivas = horas + ":00:00";
+                            totaldehoras = horas + ":00:00";
                             /* MessageBox.Show("formatoTime: " + formatoTimeSalida +
                                 " \n auxFormatoTimeSalida: " + auxFormatoTimeSalida +
-                                " \n horas_efectivas ELSE: " + horas_efectivas); */
+                                " \n totaldehoras ELSE: " + totaldehoras); */
                         }
                         //FIN HORAS EFECTIVAS
 
@@ -232,7 +233,7 @@ namespace empleadoscontrol
                         codigo1.Connection = conn;
                         codigo1.CommandText = ("UPDATE `registro_empleados` SET " +
                             "`hora_salida`='" + auxFormatoTimeSalida + "'," +
-                            "`hora_efectiva`='" + horas_efectivas + "' " +
+                            "`total_de_horas`='" + totaldehoras + "' " +
                             "WHERE `codigo_empleado`= '" + txt_codEmpleado.Text + "' " +
                             "AND `fecha_registro`= '" + formatoDate + "' AND `estado`=1");
                         try
@@ -240,7 +241,7 @@ namespace empleadoscontrol
                             codigo1.ExecuteNonQuery();
                             conn.Close();
                             MessageBox.Show("Se registro correctamente! \n " +
-                                "Fecha: " + hoy.ToString("yyyy-MM-dd") + " \n " +
+                                "Fecha: " + hoy.ToString("dd-MM-yy") + " \n " +
                                 "Hora: " + auxFormatoTimeSalida + "", "Salida",
                                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             txt_codEmpleado.Focus();
@@ -248,6 +249,7 @@ namespace empleadoscontrol
                         }
                         catch (OdbcException ex)
                         {
+                            limpiarCampos();
                             MessageBox.Show(" Error al registrar la salida. \n\n Error: " + ex.ToString());
                             conn.Close();
                         }
@@ -255,7 +257,7 @@ namespace empleadoscontrol
                 }
                 else
                 {
-                    //usted ya salió, no sea meco
+                    limpiarCampos();
                     MessageBox.Show("El empleado ya tiene una salida registrada. ",
                             "Salida", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }                

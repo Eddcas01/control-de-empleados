@@ -32,11 +32,14 @@
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bonoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contabilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Lbl_usuario = new System.Windows.Forms.Label();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contabilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarEntradasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarSalidasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteIndividualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Lbl_usuario = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +49,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.mantenimientosToolStripMenuItem,
-            this.contabilidadToolStripMenuItem});
+            this.contabilidadToolStripMenuItem,
+            this.reporteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -71,9 +75,15 @@
             // bonoToolStripMenuItem
             // 
             this.bonoToolStripMenuItem.Name = "bonoToolStripMenuItem";
-            this.bonoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.bonoToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
             this.bonoToolStripMenuItem.Text = "Prueba";
             this.bonoToolStripMenuItem.Click += new System.EventHandler(this.BonoToolStripMenuItem_Click);
+            // 
+            // empleadosToolStripMenuItem
+            // 
+            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // contabilidadToolStripMenuItem
             // 
@@ -83,24 +93,6 @@
             this.contabilidadToolStripMenuItem.Name = "contabilidadToolStripMenuItem";
             this.contabilidadToolStripMenuItem.Size = new System.Drawing.Size(87, 24);
             this.contabilidadToolStripMenuItem.Text = "Procesos";
-            // 
-            // Lbl_usuario
-            // 
-            this.Lbl_usuario.AutoSize = true;
-            this.Lbl_usuario.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Lbl_usuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_usuario.Location = new System.Drawing.Point(0, 429);
-            this.Lbl_usuario.Name = "Lbl_usuario";
-            this.Lbl_usuario.Size = new System.Drawing.Size(66, 21);
-            this.Lbl_usuario.TabIndex = 2;
-            this.Lbl_usuario.Text = "Usuario";
-            this.Lbl_usuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // registrarEntradasToolStripMenuItem
             // 
@@ -115,6 +107,41 @@
             this.registrarSalidasToolStripMenuItem.Size = new System.Drawing.Size(208, 24);
             this.registrarSalidasToolStripMenuItem.Text = "Registrar Salidas";
             this.registrarSalidasToolStripMenuItem.Click += new System.EventHandler(this.RegistrarSalidasToolStripMenuItem_Click);
+            // 
+            // reporteToolStripMenuItem
+            // 
+            this.reporteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteGeneralToolStripMenuItem,
+            this.reporteIndividualToolStripMenuItem});
+            this.reporteToolStripMenuItem.Name = "reporteToolStripMenuItem";
+            this.reporteToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.reporteToolStripMenuItem.Text = "Reporte";
+            this.reporteToolStripMenuItem.Click += new System.EventHandler(this.ReporteToolStripMenuItem_Click);
+            // 
+            // reporteGeneralToolStripMenuItem
+            // 
+            this.reporteGeneralToolStripMenuItem.Name = "reporteGeneralToolStripMenuItem";
+            this.reporteGeneralToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.reporteGeneralToolStripMenuItem.Text = "Reporte General";
+            this.reporteGeneralToolStripMenuItem.Click += new System.EventHandler(this.ReporteGeneralToolStripMenuItem_Click);
+            // 
+            // reporteIndividualToolStripMenuItem
+            // 
+            this.reporteIndividualToolStripMenuItem.Name = "reporteIndividualToolStripMenuItem";
+            this.reporteIndividualToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.reporteIndividualToolStripMenuItem.Text = "Reporte Individual";
+            // 
+            // Lbl_usuario
+            // 
+            this.Lbl_usuario.AutoSize = true;
+            this.Lbl_usuario.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Lbl_usuario.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_usuario.Location = new System.Drawing.Point(0, 429);
+            this.Lbl_usuario.Name = "Lbl_usuario";
+            this.Lbl_usuario.Size = new System.Drawing.Size(66, 21);
+            this.Lbl_usuario.TabIndex = 2;
+            this.Lbl_usuario.Text = "Usuario";
+            this.Lbl_usuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mdi_control
             // 
@@ -149,5 +176,8 @@
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarEntradasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarSalidasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteGeneralToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteIndividualToolStripMenuItem;
     }
 }
