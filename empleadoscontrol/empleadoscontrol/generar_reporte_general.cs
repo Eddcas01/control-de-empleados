@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.Odbc;
+using SpreadsheetLight;
+using System.Diagnostics;
 
 namespace empleadoscontrol
 {
@@ -37,6 +39,102 @@ namespace empleadoscontrol
 
         }
 
+        void generarexcel(DataGridView dt)
+        {
+
+            Process proceso = new Process();
+            SLDocument sl = new SLDocument();
+            SLStyle sls = new SLStyle();
+
+            sls.Font.FontSize = 2;
+            sls.Font.Bold = true;
+
+            if (dt.Rows.Count > 0)
+            {
+                string ruta = "";
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+
+
+                    //ruta y codigo para guardar
+
+
+                    ruta = saveFileDialog1.FileName;
+
+
+
+
+
+                    try
+                    {
+
+                        int ic = 1;
+                        foreach (DataGridViewColumn column in dt.Columns)
+                        {
+
+                            sl.SetCellValue(1, ic, column.HeaderText.ToString());
+                            sl.SetCellStyle(1, ic, sls);
+                            sl.SetColumnWidth(ic, 25);
+                            ic++;
+
+                        }
+
+
+
+                        int ir = 2;
+                        foreach (DataGridViewRow row in dt.Rows)
+                        {
+
+                            sl.SetCellValue(ir, 1, row.Cells[0].Value.ToString());
+                            sl.SetCellValue(ir, 2, row.Cells[1].Value.ToString());
+                            sl.SetCellValue(ir, 3, row.Cells[2].Value.ToString());
+                            sl.SetCellValue(ir, 4, row.Cells[3].Value.ToString());
+                            sl.SetCellValue(ir, 5, row.Cells[4].Value.ToString());
+                            ir++;
+
+                        }
+                        sl.AutoFitColumn(1, 10);
+                        sl.AutoFitRow(1, 100000);
+                        sl.SaveAs(ruta);
+                        MessageBox.Show("Guardado existosamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        saveFileDialog1.FileName = "Reporte";
+
+                        proceso.StartInfo.FileName = ruta;
+                        proceso.Start();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("El Archivo Esta Actualmente Abierto", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        saveFileDialog1.FileName = "Reporte";
+                    }
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Sin datos para reporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
         void llenarDataGrid(string fechaInicio, string fechaFin)
         {
             /*/ MessageBox.Show("fechaInicio: " + fechaInicio + "\n\n fechaFin: " + fechaFin); /*/
@@ -57,6 +155,10 @@ namespace empleadoscontrol
                 eje.Fill(datos);
                 Dgv_vistaPreliminar.DataSource = datos;
                 eje.Update(datos);
+                Dgv_vistaPreliminar.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                Dgv_vistaPreliminar.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                Dgv_vistaPreliminar.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+                Dgv_vistaPreliminar.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
                 conn.Close(); 
             }
             catch (Exception ex)
@@ -100,6 +202,11 @@ namespace empleadoscontrol
         {
             Dtp_fechaA.MinDate = Dtp_fechaDe.Value;
             Dtp_fechaA.Enabled = true;
+        }
+
+        private void Btn_generarExcel_Click(object sender, EventArgs e)
+        {
+            generarexcel(Dgv_vistaPreliminar);
         }
     }
 }
