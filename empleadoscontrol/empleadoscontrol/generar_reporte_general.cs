@@ -46,7 +46,7 @@ namespace empleadoscontrol
             SLDocument sl = new SLDocument();
             SLStyle sls = new SLStyle();
 
-            sls.Font.FontSize = 2;
+            sls.Font.FontSize = 10;
             sls.Font.Bold = true;
 
             if (dt.Rows.Count > 0)
@@ -97,7 +97,7 @@ namespace empleadoscontrol
                         sl.AutoFitColumn(1, 10);
                         sl.AutoFitRow(1, 100000);
                         sl.SaveAs(ruta);
-                        MessageBox.Show("Guardado existosamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Guardado existosamente.", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         saveFileDialog1.FileName = "Reporte";
 
                         proceso.StartInfo.FileName = ruta;
@@ -107,7 +107,7 @@ namespace empleadoscontrol
                     catch (Exception ex)
                     {
 
-                        MessageBox.Show("El Archivo Esta Actualmente Abierto", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("La acción no se puede completar porque el Excel tiene abierto el archivo. \n Cierre el archivo e inténtelo de nuevo", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         saveFileDialog1.FileName = "Reporte";
                     }
 
@@ -116,7 +116,7 @@ namespace empleadoscontrol
             }
             else
             {
-                MessageBox.Show("Sin datos para reporte", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Sin datos para el reporte.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
 
             }
@@ -186,9 +186,14 @@ namespace empleadoscontrol
                     /*/
                     MessageBox.Show("auxfechaDe: " + auxfechaDe + "\n auxfechaA: " + auxfechaA); 
                     /*/
-                    llenarDataGrid(auxfechaDe, auxfechaA); 
+                    llenarDataGrid(auxfechaDe, auxfechaA);
                     //Dgv_vistaPreliminar.AutoResizeColumns(DataGridViewAutoSizeColumnsMo‌​de.Fill);
-                    btn_generarExcel.Enabled = true;
+                    if (Dgv_vistaPreliminar.Rows.Count >= 1) { btn_generarExcel.Enabled = true; }
+                    else {
+                        MessageBox.Show("No existen datos entre las fechas seleccionadas.","Consulta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        btn_generarExcel.Enabled = false;
+                    }
+                   
                 }                                
             }
             catch (Exception ex)
@@ -207,6 +212,7 @@ namespace empleadoscontrol
         private void Btn_generarExcel_Click(object sender, EventArgs e)
         {
             generarexcel(Dgv_vistaPreliminar);
+            
         }
     }
 }
